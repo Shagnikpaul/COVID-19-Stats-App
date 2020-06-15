@@ -149,9 +149,7 @@ public class covidApi extends Thread
                 try
                 {
                     JSONObject object=new JSONObject(response);
-                    //writing cache for introscreen
-
-
+                    //setting the TextView
                     textView.setText(object.getString("cases"));
                 } catch (JSONException e)
                 {
@@ -165,6 +163,7 @@ public class covidApi extends Thread
             {
                 Log.i("thiss","Failure to retrieve data for intro");
                 Toast.makeText(ct,"No Internet Connection", LENGTH_SHORT).show();
+                //taking at least totalCases
                 textView.setText(covidApi.totalCases);
             }
         });

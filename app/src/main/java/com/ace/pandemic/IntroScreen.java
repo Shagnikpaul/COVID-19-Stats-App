@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 public class IntroScreen extends AppCompatActivity {
     Intent intent;
+    TextView textViewI;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,7 +18,7 @@ public class IntroScreen extends AppCompatActivity {
         //getting message corresponding to key
         String message= intent.getStringExtra(MainActivity.key);
 
-        TextView textViewI = findViewById(R.id.lulCases);
+        textViewI = findViewById(R.id.lulCases);
 
         covidApi.setIntroCases(textViewI,this);
     }
@@ -25,5 +26,9 @@ public class IntroScreen extends AppCompatActivity {
     {
         // baper kaaj shesh
        finish();
+    }
+    public void refresh(View view)
+    {
+        covidApi.setIntroCases(textViewI,this);
     }
 }
