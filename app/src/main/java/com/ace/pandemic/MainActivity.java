@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.kosalgeek.android.caching.FileCacher;
@@ -15,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String key="WHATGOESYOURBAPUS";
 
+    TextView infoOne,infoTwo,infoText;
+    Button confirmedButton,recoveredButton,deathButtoon;
     //cacher object
     FileCacher<String> stringCacher=new FileCacher<>(MainActivity.this,"sometext.txt");
     @Override
@@ -25,21 +28,29 @@ public class MainActivity extends AppCompatActivity {
         //setting main xml
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         //making textView objects
-        TextView tDeath2,nCases2,nDeath2,tRecover2, tCases2;
-        tDeath2 = findViewById(R.id.tDeath);
-        nCases2 = findViewById(R.id.nCases);
-        nDeath2 = findViewById(R.id.nDeath);
-        tRecover2 = findViewById(R.id.tRecover);
-        tCases2 = findViewById(R.id.tCases);
-
-        covidApi.setPlainTextRef(tDeath2,nCases2,nDeath2,tRecover2,tCases2);
-
+        covidApi.INFOONE = findViewById(R.id.INFOONE);
+        covidApi.INFOTWO = findViewById(R.id.INFOTWO);
+        covidApi.INFOTEXT = findViewById(R.id.INFO);
         new covidApi(this,stringCacher);
         startActivity(intent);
-
+        confirmedButton = findViewById(R.id.confirmedButton);
+        recoveredButton = findViewById(R.id.recoveredButton);
+        deathButtoon = findViewById(R.id.deathButton);
+        confirmedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { covidApi.dynamicInfoDisplay(1); }});
+        recoveredButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { covidApi.dynamicInfoDisplay(2);
+            }
+        });
+        deathButtoon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                covidApi.dynamicInfoDisplay(3);
+            }
+        });
     }
     public void  retryNet(View view)
     {

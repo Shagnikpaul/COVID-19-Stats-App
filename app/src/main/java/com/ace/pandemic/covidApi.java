@@ -26,7 +26,7 @@ public class covidApi extends Thread
 {
     public static String totalCases="",newCases="",totalRecovered="",totalDeaths="",newDeaths="";
     //textView Ref
-    static TextView tDeath,nCases,nDeath,tRecover,tCases;
+    static TextView INFOONE,INFOTWO,INFOTEXT;
 
     private static String url="https://disease.sh/v2/all";
 
@@ -58,15 +58,13 @@ public class covidApi extends Thread
 
 
                     //displaying data
-                    tDeath.setText("Total Deaths : "+totalDeaths);
+                    INFOONE.setText("New Cases : "+newCases);
 
-                    tRecover.setText("Total Recovered : "+totalRecovered);
+                    INFOTWO.setText("Total Cases : "+totalCases);
 
-                    nCases.setText("New Cases : "+newCases);
+                    INFOTEXT.setText("Confirmed");
 
-                    tCases.setText("Total Cases : "+totalCases);
 
-                    nDeath.setText("New Deaths : "+newDeaths);
 
 
                 }
@@ -91,26 +89,15 @@ public class covidApi extends Thread
 
                         //extracting data from JSON format
                         JSONObject object=new JSONObject(chacheResponse);
-
                         totalCases = object.getString("cases");
                         newCases = object.getString("todayCases");
                         totalRecovered = object.getString("recovered");
                         totalDeaths = object.getString("deaths");
                         newDeaths = object.getString("todayDeaths");
-
-
                         //displaying data
-                        tDeath.setText("Total Deaths : "+totalDeaths);
-
-                        tRecover.setText("Total Recovered : "+totalRecovered);
-
-                        nCases.setText("New Cases : "+newCases);
-
-                        tCases.setText("Total Cases : "+totalCases);
-
-                        nDeath.setText("New Deaths : "+newDeaths);
-
-
+                        INFOONE.setText("New Cases : "+newCases);
+                        INFOTWO.setText("Total Cases : "+totalCases);
+                        INFOTEXT.setText("Confirmed");
                     }
                     catch (IOException e)
                     {
@@ -130,14 +117,24 @@ public class covidApi extends Thread
         RequestQueue queue = Volley.newRequestQueue(ct);
         queue.add(request);
     }
-    static void setPlainTextRef(TextView tDeath1, TextView nCases1 , TextView nDeath1,TextView tRecover1, TextView tCases1)
+    static void dynamicInfoDisplay(int buttonNumber)
     {
-        tDeath = tDeath1;
-        nCases =  nCases1;
-        nDeath = nDeath1;
-        tRecover = tRecover1;
-        tCases = tCases1;
-
+        switch (buttonNumber)
+        {
+            case 1 : INFOTEXT.setText("Confirmed");
+                     INFOONE.setText("Total Confirmed cases "+totalCases);
+                     INFOTWO.setText("New Confiremed Cases "+newCases);
+                     break;
+            case 2 : INFOTEXT.setText("Recovered");
+                     INFOONE.setText("Total Recovered cases "+totalRecovered);
+                     INFOTWO.setText("NOT AVAILABLE");
+                     break;
+            case 3 : INFOTEXT.setText("Deaths");
+                     INFOONE.setText("Total Deaths "+totalDeaths);
+                     INFOTWO.setText("New Deaths "+newDeaths);
+                     break;
+            default: break;
+        }
     }
     static void setIntroCases(final TextView textView,final Context ct)
     {
