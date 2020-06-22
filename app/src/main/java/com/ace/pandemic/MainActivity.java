@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         //making textView objects
         covidApi.INFOONE = findViewById(R.id.INFOONE);
         covidApi.INFOTWO = findViewById(R.id.INFOTWO);
-        covidApi.INFOTEXT = findViewById(R.id.INFO);
+        covidApi.INFOTEXT = findViewById(R.id.totalSubHeading);
+        covidApi.INFOTEXT2 = findViewById(R.id.newSubHeading);
+
         new covidApi(this,stringCacher);
         startActivity(intent);
-        confirmedButton = findViewById(R.id.confirmedButton);
+        confirmedButton = findViewById(R.id.ConfirmedButton);
         recoveredButton = findViewById(R.id.recoveredButton);
         deathButtoon = findViewById(R.id.deathButton);
         confirmedButton.setOnClickListener(new View.OnClickListener() {

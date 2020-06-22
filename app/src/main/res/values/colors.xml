@@ -4,4 +4,8 @@
     <color name="colorPrimaryDark">#000</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="redMaterial">#ED2626</color>
+    <color name="formalBlack">#202020</color>
+    <color name="lighterBlack">#323232</color>
+    <color name="white">#FFFFFF</color>
+    <color name="darkishWhite">#D1D1D1</color>
 </resources>

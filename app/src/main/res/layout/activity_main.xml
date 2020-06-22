@@ -1,124 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/formalBlack">
 
     <TextView
-        android:id="@+id/INFOONE"
-        android:layout_width="236dp"
-        android:layout_height="39dp"
-        android:hint="New Cases"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
-
-    <TextView
-        android:id="@+id/INFOTWO"
-        android:layout_width="236dp"
-        android:layout_height="39dp"
-        android:hint="Total Cases"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471" />
-
-    <Button
-        android:id="@+id/retry"
-        android:layout_width="114dp"
-        android:layout_height="50dp"
-        android:onClick="retryNet"
-        android:text="Refresh"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="137dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:onClick="getGraph"
-        android:text="Get Visual"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/retry"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.825" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="253dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="36dp"
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="20dp"
         android:text="@string/global_statistics"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/confirmedButton"
+        android:textColor="#FFF"
+        android:textSize="25sp" />
+    <RelativeLayout
+        android:id="@+id/tiles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirmed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        android:layout_below="@id/heading"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp">
+        <Button
+            android:id="@+id/ConfirmedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirmed" />
+        <Button
+            android:id="@+id/recoveredButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recovered"
+            android:layout_toRightOf="@id/ConfirmedButton"
+            android:layout_marginLeft="10dp"/>
+        <Button
+            android:id="@+id/deathButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Deceased"
+            android:layout_toRightOf="@id/recoveredButton"
+            android:layout_marginLeft="10dp"/>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/recoveredButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recovered"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="0dp"
+        android:background="@color/lighterBlack"
+        android:padding="15dp"
+        android:layout_below="@id/tiles">
+        <TextView
+            android:id="@+id/totalHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TOTAL"
+            android:fontFamily="@font/poppins_black"
+            android:textColor="@color/white"
+            android:textSize="65sp" />
+        <TextView
+            android:id="@+id/totalSubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/totalHeading"
+            android:text="Confirmed Cases"
+            android:textColor="@color/darkishWhite"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="23sp"
+            android:layout_marginTop="-30dp"/>
+        <TextView
+            android:id="@+id/INFOONE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/totalSubHeading"
+            android:text="@string/loading"
+            android:textColor="@color/redMaterial"
+            android:textSize="70sp"
+            android:fontFamily="@font/poppins_black" />
+        <TextView
+            android:id="@+id/newHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/INFOONE"
+            android:text="NEW"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_black"
+            android:textSize="65sp"
+            android:layout_marginTop="-10dp"/>
+        <TextView
+            android:id="@+id/newSubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newHeading"
+            android:textColor="@color/darkishWhite"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Confirmed Cases"
+            android:textSize="23sp"
+            android:layout_marginTop="-30dp"/>
+        <TextView
+            android:id="@+id/INFOTWO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newSubHeading"
+            android:text="@string/loading"
+            android:textColor="@color/redMaterial"
+            android:textSize="65sp"
+            android:fontFamily="@font/poppins_black" />
 
-    <Button
-        android:id="@+id/deathButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Coffin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.897"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        <Button
+            android:id="@+id/graphButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/INFOTWO"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="-10dp"
+            android:backgroundTint="@color/redMaterial"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Graph"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark" />
 
-    <TextView
-        android:id="@+id/INFO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

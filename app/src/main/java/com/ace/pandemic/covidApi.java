@@ -26,7 +26,7 @@ public class covidApi extends Thread
 {
     public static String totalCases="",newCases="",totalRecovered="",totalDeaths="",newDeaths="";
     //textView Ref
-    static TextView INFOONE,INFOTWO,INFOTEXT;
+    static TextView INFOONE,INFOTWO,INFOTEXT,INFOTEXT2;
 
     private static String url="https://disease.sh/v2/all";
 
@@ -58,11 +58,13 @@ public class covidApi extends Thread
 
 
                     //displaying data
-                    INFOONE.setText("New Cases : "+newCases);
+                    INFOONE.setText(newCases);
 
-                    INFOTWO.setText("Total Cases : "+totalCases);
+                    INFOTWO.setText(totalCases);
 
-                    INFOTEXT.setText("Confirmed");
+                    INFOTEXT.setText("Confirmed Cases");
+
+                    INFOTEXT2.setText("Confirmed Cases");
 
 
 
@@ -95,9 +97,10 @@ public class covidApi extends Thread
                         totalDeaths = object.getString("deaths");
                         newDeaths = object.getString("todayDeaths");
                         //displaying data
-                        INFOONE.setText("New Cases : "+newCases);
-                        INFOTWO.setText("Total Cases : "+totalCases);
-                        INFOTEXT.setText("Confirmed");
+                        INFOONE.setText(newCases);
+                        INFOTWO.setText(totalCases);
+                        INFOTEXT.setText("Confirmed Cases");
+                        INFOTEXT2.setText("Confirmed Cases");
                     }
                     catch (IOException e)
                     {
@@ -121,17 +124,20 @@ public class covidApi extends Thread
     {
         switch (buttonNumber)
         {
-            case 1 : INFOTEXT.setText("Confirmed");
-                     INFOONE.setText("Total Confirmed cases "+totalCases);
-                     INFOTWO.setText("New Confiremed Cases "+newCases);
+            case 1 : INFOTEXT.setText("Confirmed Cases");
+                     INFOTEXT2.setText("Confirmed Cases");
+                     INFOONE.setText(totalCases);
+                     INFOTWO.setText(newCases);
                      break;
-            case 2 : INFOTEXT.setText("Recovered");
-                     INFOONE.setText("Total Recovered cases "+totalRecovered);
-                     INFOTWO.setText("NOT AVAILABLE");
+            case 2 : INFOTEXT.setText("Recovered ");
+                     INFOTEXT2.setText("Recovered");
+                     INFOONE.setText(totalRecovered);
+                     INFOTWO.setText("N/A");
                      break;
-            case 3 : INFOTEXT.setText("Deaths");
-                     INFOONE.setText("Total Deaths "+totalDeaths);
-                     INFOTWO.setText("New Deaths "+newDeaths);
+            case 3 : INFOTEXT.setText("COVID Deaths");
+                     INFOTEXT2.setText("COVID Deaths");
+                     INFOONE.setText(totalDeaths);
+                     INFOTWO.setText(newDeaths);
                      break;
             default: break;
         }
