@@ -55,6 +55,9 @@ public class covidApi extends Thread
                     totalRecovered = object.getString("recovered");
                     totalDeaths = object.getString("deaths");
                     newDeaths = object.getString("todayDeaths");
+                    //setting init textViews
+                    INFOONE.setText(totalCases);
+                    INFOTWO.setText(newCases);
 
                 }
                 catch (JSONException e)
@@ -83,6 +86,9 @@ public class covidApi extends Thread
                         totalRecovered = object.getString("recovered");
                         totalDeaths = object.getString("deaths");
                         newDeaths = object.getString("todayDeaths");
+                        //setting init textViews
+                        INFOONE.setText(totalCases);
+                        INFOTWO.setText(newCases);
                     }
                     catch (IOException e)
                     {
