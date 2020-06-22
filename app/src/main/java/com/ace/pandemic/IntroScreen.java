@@ -18,7 +18,8 @@ public class IntroScreen extends AppCompatActivity {
         //getting message corresponding to key
         String message= intent.getStringExtra(MainActivity.key);
 
-        textViewI = findViewById(R.id.lulCases);
+        textViewI = findViewById(R.id.lulCases); //code update to hoini bru
+        //kikorbo aaar
 
         covidApi.setIntroCases(textViewI,this);
     }

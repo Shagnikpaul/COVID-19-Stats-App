@@ -56,19 +56,6 @@ public class covidApi extends Thread
                     totalDeaths = object.getString("deaths");
                     newDeaths = object.getString("todayDeaths");
 
-
-                    //displaying data
-                    INFOONE.setText(newCases);
-
-                    INFOTWO.setText(totalCases);
-
-                    INFOTEXT.setText("Confirmed Cases");
-
-                    INFOTEXT2.setText("Confirmed Cases");
-
-
-
-
                 }
                 catch (JSONException e)
                 {
@@ -96,11 +83,6 @@ public class covidApi extends Thread
                         totalRecovered = object.getString("recovered");
                         totalDeaths = object.getString("deaths");
                         newDeaths = object.getString("todayDeaths");
-                        //displaying data
-                        INFOONE.setText(newCases);
-                        INFOTWO.setText(totalCases);
-                        INFOTEXT.setText("Confirmed Cases");
-                        INFOTEXT2.setText("Confirmed Cases");
                     }
                     catch (IOException e)
                     {
@@ -120,7 +102,7 @@ public class covidApi extends Thread
         RequestQueue queue = Volley.newRequestQueue(ct);
         queue.add(request);
     }
-    static void dynamicInfoDisplay(int buttonNumber)
+    static void dynamicInfoDisplay(int buttonNumber,Context ct)
     {
         switch (buttonNumber)
         {
@@ -132,7 +114,7 @@ public class covidApi extends Thread
             case 2 : INFOTEXT.setText("Recovered ");
                      INFOTEXT2.setText("Recovered");
                      INFOONE.setText(totalRecovered);
-                     INFOTWO.setText("N/A");
+                     setNewRecovered(INFOTWO,ct);
                      break;
             case 3 : INFOTEXT.setText("COVID Deaths");
                      INFOTEXT2.setText("COVID Deaths");
@@ -168,6 +150,33 @@ public class covidApi extends Thread
                 Toast.makeText(ct,"No Internet Connection", LENGTH_SHORT).show();
                 //taking at least totalCases
                 textView.setText(covidApi.totalCases);
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(ct);
+        queue.add(request);
+    }
+    //returns newRecovered
+     public static void setNewRecovered(final TextView INFOTWO, Context ct)
+    {
+        String recoverUrl="https://disease.sh/v2/all";
+
+
+        final StringRequest request =new StringRequest(recoverUrl, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject object = new JSONObject(response);
+
+                    INFOTWO.setText(object.getString("todayRecovered"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                INFOTWO.setText("N/A");
             }
         });
         RequestQueue queue = Volley.newRequestQueue(ct);

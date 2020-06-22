@@ -2,6 +2,7 @@ package com.ace.pandemic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,36 +24,45 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //intent for IntroSCreen
         Intent intent =new Intent(this,IntroScreen.class);
 
         //setting main xml
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //making textView objects
+
+        //copying main Activity textView objects to covidapi
         covidApi.INFOONE = findViewById(R.id.INFOONE);
         covidApi.INFOTWO = findViewById(R.id.INFOTWO);
         covidApi.INFOTEXT = findViewById(R.id.totalSubHeading);
         covidApi.INFOTEXT2 = findViewById(R.id.newSubHeading);
 
         new covidApi(this,stringCacher);
-        startActivity(intent);
+
+        //making a context object
+        final Context ct=this;
+
         confirmedButton = findViewById(R.id.ConfirmedButton);
         recoveredButton = findViewById(R.id.recoveredButton);
         deathButtoon = findViewById(R.id.deathButton);
+
+        //setting data onCLick
         confirmedButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { covidApi.dynamicInfoDisplay(1); }});
+            public void onClick(View v) { covidApi.dynamicInfoDisplay(1,ct); }});
         recoveredButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { covidApi.dynamicInfoDisplay(2);
+            public void onClick(View v) { covidApi.dynamicInfoDisplay(2,ct);
             }
         });
         deathButtoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                covidApi.dynamicInfoDisplay(3);
+                covidApi.dynamicInfoDisplay(3,ct);
             }
         });
+
+        startActivity(intent);
     }
     public void  retryNet(View view)
     {

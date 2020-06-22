@@ -23,93 +23,106 @@
         android:layout_below="@id/heading"
         android:layout_centerHorizontal="true"
         android:padding="5dp">
+
         <Button
             android:id="@+id/ConfirmedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Confirmed" />
+            android:text="Confirmed"
+            android:textSize="12sp" />
+
         <Button
             android:id="@+id/recoveredButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recovered"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/ConfirmedButton"
-            android:layout_marginLeft="10dp"/>
+            android:text="Recovered"
+            android:textSize="12sp" />
+
         <Button
             android:id="@+id/deathButton"
-            android:layout_width="wrap_content"
+            android:layout_width="118dp"
             android:layout_height="wrap_content"
-            android:text="Deceased"
+            android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/recoveredButton"
-            android:layout_marginLeft="10dp"/>
+            android:text="Deceased"
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
+        android:layout_width="354dp"
+        android:layout_height="535dp"
+        android:layout_below="@id/tiles"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="0dp"
         android:background="@color/lighterBlack"
-        android:padding="15dp"
-        android:layout_below="@id/tiles">
+        android:padding="15dp">
+
         <TextView
             android:id="@+id/totalHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOTAL"
             android:fontFamily="@font/poppins_black"
+            android:text="TOTAL"
             android:textColor="@color/white"
-            android:textSize="65sp" />
+            android:textSize="24sp" />
+
         <TextView
             android:id="@+id/totalSubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/totalHeading"
+            android:layout_marginTop="-10dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="Confirmed Cases"
             android:textColor="@color/darkishWhite"
-            android:fontFamily="@font/poppins_bold"
-            android:textSize="23sp"
-            android:layout_marginTop="-30dp"/>
+            android:textSize="30sp" />
+
         <TextView
             android:id="@+id/INFOONE"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/totalSubHeading"
+            android:fontFamily="@font/poppins_black"
             android:text="@string/loading"
             android:textColor="@color/redMaterial"
-            android:textSize="70sp"
-            android:fontFamily="@font/poppins_black" />
+            android:textSize="50dp" />
+
         <TextView
             android:id="@+id/newHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/INFOONE"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_black"
             android:text="NEW"
             android:textColor="@color/white"
-            android:fontFamily="@font/poppins_black"
-            android:textSize="65sp"
-            android:layout_marginTop="-10dp"/>
+            android:textSize="24sp" />
+
         <TextView
             android:id="@+id/newSubHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/newHeading"
-            android:textColor="@color/darkishWhite"
+            android:layout_marginTop="-7dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Confirmed Cases"
-            android:textSize="23sp"
-            android:layout_marginTop="-30dp"/>
+            android:textColor="@color/darkishWhite"
+            android:textSize="30sp" />
+
         <TextView
             android:id="@+id/INFOTWO"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/newSubHeading"
+            android:layout_marginTop="-1dp"
+            android:fontFamily="@font/poppins_black"
             android:text="@string/loading"
             android:textColor="@color/redMaterial"
-            android:textSize="65sp"
-            android:fontFamily="@font/poppins_black" />
+            android:textSize="50dp" />
 
         <Button
             android:id="@+id/graphButton"
@@ -117,9 +130,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/INFOTWO"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="17dp"
             android:backgroundTint="@color/redMaterial"
             android:fontFamily="@font/poppins_semibold"
+            android:onClick="getGraph"
             android:text="Graph"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark" />
