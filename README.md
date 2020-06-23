@@ -1,2 +1,2 @@
-# COVID-19-Stats-App
+# COVID-19 Global Statistics
 More info coming soon...
