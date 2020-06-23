@@ -162,7 +162,7 @@ public class covidApi extends Thread
         queue.add(request);
     }
     //returns newRecovered
-     public static void setNewRecovered(final TextView INFOTWO, Context ct)
+    public static void setNewRecovered(final TextView INFOTWO, Context ct)
     {
         String recoverUrl="https://disease.sh/v2/all";
 

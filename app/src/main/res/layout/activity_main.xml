@@ -16,6 +16,19 @@
         android:text="@string/global_statistics"
         android:textColor="#FFF"
         android:textSize="25sp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/redMaterial"
+        android:onClick="retryNet"
+        android:text="Refresh"
+        android:textAllCaps="false"
+        android:textColor="@color/formalBlack" />
+
     <RelativeLayout
         android:id="@+id/tiles"
         android:layout_width="wrap_content"
@@ -51,8 +64,8 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="354dp"
-        android:layout_height="535dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/tiles"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
@@ -128,8 +141,9 @@
             android:id="@+id/graphButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/INFOTWO"
+
             android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
             android:layout_marginTop="7dp"
             android:layout_marginRight="17dp"
             android:backgroundTint="@color/redMaterial"
