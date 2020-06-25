@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String key="WHATGOESYOURBAPUS";
 
     TextView infoOne,infoTwo,infoText;
-    Button confirmedButton,recoveredButton, deathButton;
+    Button confirmedButton,recoveredButton, deathButton,graphButton;
+    int currentScreen = 1;
     //cacher object
     FileCacher<String> stringCacher=new FileCacher<>(MainActivity.this,"sometext.txt");
     @Override
@@ -25,11 +26,9 @@ public class MainActivity extends AppCompatActivity {
     {
         //intent for IntroSCreen
         Intent intent =new Intent(this,IntroScreen.class);
-
         //setting main xml
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         //copying main Activity textView objects to covidapi
         covidApi.INFOONE = findViewById(R.id.INFOONE);
         covidApi.INFOTWO = findViewById(R.id.INFOTWO);
@@ -37,36 +36,60 @@ public class MainActivity extends AppCompatActivity {
         covidApi.INFOTEXT2 = findViewById(R.id.newSubHeading);
 
         new covidApi(this,stringCacher);
-
         //making a context object
         final Context ct=this;
 
         confirmedButton = findViewById(R.id.ConfirmedButton);
         recoveredButton = findViewById(R.id.recoveredButton);
         deathButton = findViewById(R.id.deathButton);
+        graphButton = findViewById(R.id.graphButton);
 
         //setting data onCLick
         confirmedButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { covidApi.dynamicInfoDisplay(1,ct); }});
+            public void onClick(View v) {
+                currentScreen = 1;
+                covidApi.dynamicInfoDisplay(1,ct); }});
         recoveredButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { covidApi.dynamicInfoDisplay(2,ct);
+            public void onClick(View v) {
+                currentScreen = 2;
+                covidApi.dynamicInfoDisplay(2,ct);
             }
         });
         deathButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { covidApi.dynamicInfoDisplay(3,ct);
+            public void onClick(View v) {
+                currentScreen = 3;
+                covidApi.dynamicInfoDisplay(3,ct);
             }
         });
-
+        graphButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent graphScreenIntent;
+                switch (currentScreen)
+                {
+                    case 1 : graphScreenIntent = new Intent(ct, graph_activity.class);
+                             startActivity(graphScreenIntent);
+                             break;
+                    case 2 : graphScreenIntent = new Intent(ct, recoveredGraph.class);
+                             startActivity(graphScreenIntent);
+                             break;
+                    case 3 : graphScreenIntent = new Intent(ct, deathGraph.class);
+                             startActivity(graphScreenIntent);
+                             break;
+                    default: break;
+                }
+            }
+        });
         startActivity(intent);
     }
     public void  retryNet(View view)
     {
         new covidApi(this,stringCacher);
     }
-    public void getGraph(View view)
+    /*public void getGraph(View view)
     {
 
         //creating intent object
@@ -78,5 +101,5 @@ public class MainActivity extends AppCompatActivity {
 
         //starting new Activity
         startActivity(intent);
-    }
+    }*/
 }

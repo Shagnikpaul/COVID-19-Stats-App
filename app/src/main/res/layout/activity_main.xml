@@ -148,7 +148,6 @@
             android:layout_marginRight="17dp"
             android:backgroundTint="@color/redMaterial"
             android:fontFamily="@font/poppins_semibold"
-            android:onClick="getGraph"
             android:text="Graph"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark" />
