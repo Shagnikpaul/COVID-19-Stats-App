@@ -1,3 +1,8 @@
+/**The brain of the app controls everything
+ * this used covidApi as assistant
+ * IntroScreen actually appears after MainActivity
+ * this
+ */
 package com.ace.pandemic;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView infoOne,infoTwo,infoText;
     Button confirmedButton,recoveredButton, deathButton,graphButton;
+
+    //stores the current screen number to be displayed for mainActivity by default 1
     int currentScreen = 1;
     //cacher object
     FileCacher<String> stringCacher=new FileCacher<>(MainActivity.this,"sometext.txt");
@@ -64,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 covidApi.dynamicInfoDisplay(3,ct);
             }
         });
+
+        //setting the specific activity for specific button presses
+        // this method uses the currentScreen int initiated by case type on click
         graphButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,10 +95,15 @@ public class MainActivity extends AppCompatActivity {
         });
         startActivity(intent);
     }
+    /**Helps to retry the collection of data from covidApi
+     * **/
     public void  retryNet(View view)
     {
         new covidApi(this,stringCacher);
     }
+    /**
+     * affected by flex
+     */
     /*public void getGraph(View view)
     {
 
