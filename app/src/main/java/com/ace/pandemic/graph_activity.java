@@ -1,3 +1,8 @@
+/**
+ * Does everything for u to set totalCases in india in a graph format
+ * it needs a separate xml
+ */
+
 package com.ace.pandemic;
 
 import androidx.appcompat.app.AppCompatActivity;

@@ -1,3 +1,9 @@
+/** class specially designed to assist MainActivity
+ * keep MainActivity clean
+ * specifically contains volley requests
+ * **/
+
+
 package com.ace.pandemic;
 
 import android.content.Context;
@@ -30,6 +36,9 @@ public class covidApi extends Thread
 
     private static String url="https://disease.sh/v2/all";
 
+    /**Helps to init data and set the default INFOONE and INFOTWO
+     * **/
+
     covidApi(final Context ct, final FileCacher<String> stringCacher)//ct -> object of MainActivity(Context)
     {
         final StringRequest request = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
@@ -55,7 +64,8 @@ public class covidApi extends Thread
                     totalRecovered = object.getString("recovered");
                     totalDeaths = object.getString("deaths");
                     newDeaths = object.getString("todayDeaths");
-                    //setting init textViews
+
+                    //setting init textViews else Loading will be displayed.
                     INFOONE.setText(totalCases);
                     INFOTWO.setText(newCases);
 
@@ -86,6 +96,7 @@ public class covidApi extends Thread
                         totalRecovered = object.getString("recovered");
                         totalDeaths = object.getString("deaths");
                         newDeaths = object.getString("todayDeaths");
+
                         //setting init textViews
                         INFOONE.setText(totalCases);
                         INFOTWO.setText(newCases);
@@ -108,6 +119,9 @@ public class covidApi extends Thread
         RequestQueue queue = Volley.newRequestQueue(ct);
         queue.add(request);
     }
+    /**
+     * Sets INFOTEXTs and INFO as per button number
+     * **/
     static void dynamicInfoDisplay(int buttonNumber,Context ct)
     {
         switch (buttonNumber)
@@ -130,6 +144,9 @@ public class covidApi extends Thread
             default: break;
         }
     }
+    /**
+     * Sets the data for Intro
+     * **/
     static void setIntroCases(final TextView textView,final Context ct)
     {
         final StringRequest request =new StringRequest(url,new com.android.volley.Response.Listener<String>()
@@ -161,7 +178,10 @@ public class covidApi extends Thread
         RequestQueue queue = Volley.newRequestQueue(ct);
         queue.add(request);
     }
-    //returns newRecovered
+    /**
+     * UR what goes ur BAPUS
+     * this method not for shiros
+     * **/
     public static void setNewRecovered(final TextView INFOTWO, Context ct)
     {
         String recoverUrl="https://disease.sh/v2/all";
