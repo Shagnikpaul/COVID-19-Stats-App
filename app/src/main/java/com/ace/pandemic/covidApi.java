@@ -178,10 +178,120 @@ public class covidApi extends Thread
         RequestQueue queue = Volley.newRequestQueue(ct);
         queue.add(request);
     }
+    public static void updateData(final Context ct, final FileCacher<String> stringCacher, final int currentScreen)
+    {
+        final StringRequest request = new StringRequest(url, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try
+                {
+                    try {
+                        //adding new cache
+                        stringCacher.clearCache();
+                        stringCacher.writeCache(response);
+                    }
+                    catch (IOException exp)
+                    {
+                        Log.i("thiss","Error in cache writing");
+                    }
+                    //extracting data from JSON format
+                    JSONObject object=new JSONObject(response);
+                    totalCases = object.getString("cases");
+                    newCases = object.getString("todayCases");
+                    totalRecovered = object.getString("recovered");
+                    totalDeaths = object.getString("deaths");
+                    newDeaths = object.getString("todayDeaths");
+                    switch (currentScreen)
+                    {
+                        case 1 : INFOTEXT.setText("Confirmed Cases");
+                            INFOTEXT2.setText("Confirmed Cases");
+                            INFOONE.setText(totalCases);
+                            INFOTWO.setText(newCases);
+                            break;
+                        case 2 : INFOTEXT.setText("Recovered ");
+                            INFOTEXT2.setText("Recovered");
+                            INFOONE.setText(totalRecovered);
+                            setNewRecovered(INFOTWO,ct);
+                            break;
+                        case 3 : INFOTEXT.setText("COVID Deaths");
+                            INFOTEXT2.setText("COVID Deaths");
+                            INFOONE.setText(totalDeaths);
+                            INFOTWO.setText(newDeaths);
+                            break;
+                        default: break;
+                    }
+                    //setting init textViews else Loading will be displayed.
+
+                }
+                catch (JSONException e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //No internet Toast mandatory
+                Toast.makeText(ct,"No Internet Connection", LENGTH_SHORT).show();
+                Log.i("thiss","reacing here");
+                if(stringCacher.hasCache())
+                {
+                    //setting cache
+                    try
+                    {
+                        String chacheResponse = stringCacher.readCache();
+                        //extracting data from JSON format
+                        JSONObject object=new JSONObject(chacheResponse);
+                        totalCases = object.getString("cases");
+                        newCases = object.getString("todayCases");
+                        totalRecovered = object.getString("recovered");
+                        totalDeaths = object.getString("deaths");
+                        newDeaths = object.getString("todayDeaths");
+                        switch (currentScreen)
+                        {
+                            case 1 : INFOTEXT.setText("Confirmed Cases");
+                                INFOTEXT2.setText("Confirmed Cases");
+                                INFOONE.setText(totalCases);
+                                INFOTWO.setText(newCases);
+                                break;
+                            case 2 : INFOTEXT.setText("Recovered ");
+                                INFOTEXT2.setText("Recovered");
+                                INFOONE.setText(totalRecovered);
+                                setNewRecovered(INFOTWO,ct);
+                                break;
+                            case 3 : INFOTEXT.setText("COVID Deaths");
+                                INFOTEXT2.setText("COVID Deaths");
+                                INFOONE.setText(totalDeaths);
+                                INFOTWO.setText(newDeaths);
+                                break;
+                            default: break;
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        e.printStackTrace();
+                    }
+                    catch (JSONException e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                }
+                Log.i("thiss","failure to retrieve data covid api");
+
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(ct);
+        queue.add(request);
+    }
+
+
     /**
      * UR what goes ur BAPUS
      * this method not for shiros
      * **/
+
     public static void setNewRecovered(final TextView INFOTWO, Context ct)
     {
         String recoverUrl="https://disease.sh/v2/all";

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button confirmedButton,recoveredButton, deathButton,graphButton;
 
     //stores the current screen number to be displayed for mainActivity by default 1
-    int currentScreen = 1;
+    static int currentScreen = 1;
     //cacher object
     FileCacher<String> stringCacher=new FileCacher<>(MainActivity.this,"sometext.txt");
     @Override
@@ -101,17 +101,7 @@ public class MainActivity extends AppCompatActivity {
     public void  retryNet(View view)
     {
         final Context ct=this;
-        Intent graphScreenIntent;
-        switch (currentScreen)
-        {
-            case 1 : covidApi.dynamicInfoDisplay(1,ct);
-                break;
-            case 2 : covidApi.dynamicInfoDisplay(2,ct);
-                break;
-            case 3 : covidApi.dynamicInfoDisplay(3,ct);
-                break;
-            default: break;
-        }
+        covidApi.updateData(ct,stringCacher,currentScreen);
     }
     /**
      * affected by flex

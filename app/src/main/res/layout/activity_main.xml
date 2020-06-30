@@ -15,19 +15,16 @@
         android:padding="20dp"
         android:text="@string/global_statistics"
         android:textColor="#FFF"
-        android:textSize="25sp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:backgroundTint="@color/redMaterial"
+        android:textSize="20sp" />
+    <ImageButton
         android:onClick="retryNet"
-        android:text="Refresh"
-        android:textAllCaps="false"
-        android:textColor="@color/formalBlack" />
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/squircle"
+        android:src="@drawable/oi_reload"/>
 
     <RelativeLayout
         android:id="@+id/tiles"
@@ -67,11 +64,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tiles"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="0dp"
-        android:background="@color/lighterBlack"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_gradient"
         android:padding="15dp">
 
         <TextView
@@ -81,7 +77,9 @@
             android:fontFamily="@font/poppins_black"
             android:text="TOTAL"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/totalSubHeading"
@@ -89,31 +87,42 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/totalHeading"
             android:layout_marginTop="-10dp"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Confirmed Cases"
             android:textColor="@color/darkishWhite"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/INFOONE"
-            android:layout_width="230dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/totalSubHeading"
             android:fontFamily="@font/poppins_black"
             android:text="@string/loading"
             android:textColor="@color/redMaterial"
-            android:textSize="50dp" />
+            android:layout_marginLeft="10dp"
+            android:textSize="50sp" />
 
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="280dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="2dp"
+            android:layout_below="@id/INFOONE"
+            android:layout_marginTop="-8dp"
+            android:background="@color/seperatorColor" />
         <TextView
             android:id="@+id/newHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/INFOONE"
             android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
             android:fontFamily="@font/poppins_black"
             android:text="NEW"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/newSubHeading"
@@ -123,17 +132,19 @@
             android:layout_marginTop="-7dp"
             android:fontFamily="@font/poppins_bold"
             android:text="Confirmed Cases"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/darkishWhite"
-            android:textSize="30sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/INFOTWO"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/newSubHeading"
             android:layout_marginTop="-1dp"
             android:fontFamily="@font/poppins_black"
             android:text="@string/loading"
+            android:layout_marginLeft="10dp"
             android:textColor="@color/redMaterial"
             android:textSize="50dp" />
 
@@ -141,7 +152,6 @@
             android:id="@+id/graphButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="7dp"
