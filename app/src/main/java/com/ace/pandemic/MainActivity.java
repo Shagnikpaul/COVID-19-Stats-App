@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //setting the specific activity for specific button presses
-        // this method uses the currentScreen int initiated by case type on click
+
+        // this code uses the currentScreen int initiated by case type on click to set the specific graph
         graphButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +100,18 @@ public class MainActivity extends AppCompatActivity {
      * **/
     public void  retryNet(View view)
     {
-        new covidApi(this,stringCacher);
+        final Context ct=this;
+        Intent graphScreenIntent;
+        switch (currentScreen)
+        {
+            case 1 : covidApi.dynamicInfoDisplay(1,ct);
+                break;
+            case 2 : covidApi.dynamicInfoDisplay(2,ct);
+                break;
+            case 3 : covidApi.dynamicInfoDisplay(3,ct);
+                break;
+            default: break;
+        }
     }
     /**
      * affected by flex
