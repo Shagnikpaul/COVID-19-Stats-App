@@ -1,2 +1,2 @@
-# COVID-19 Global Statistics with a gud interface
-
+# COVID-19 Global Statistics
+![](LOGO.png)
