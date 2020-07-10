@@ -12,6 +12,10 @@
 # Download
 Get the APK [here](https://github.com/Shagnikpaul/COVID-19-Stats-App/releases/download/v0.1/COVID.STATS.v0.1.apk)
 
-
+# API and Libraries used
+  * [NOVELCOVID 19 Rest API](https://disease.sh/) 
+  * [Volley](https://github.com/google/volley) for api requests.
+  * [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) for charts.
+  * [File Cacher](https://github.com/kosalgeek/FileCacher) for saving the api data for offline display.
   
   
