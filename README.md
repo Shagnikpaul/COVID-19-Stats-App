@@ -1,2 +1,4 @@
 # COVID-19 Global Statistics
-![](LOGO.png)
+<p align="center">
+  <img src="https://github.com/Shagnikpaul/COVID-19-Stats-App/blob/master/LOGO.png" />
+</p>
