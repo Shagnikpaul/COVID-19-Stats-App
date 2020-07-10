@@ -18,4 +18,4 @@ Get the APK [here](https://github.com/Shagnikpaul/COVID-19-Stats-App/releases/do
   * [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) for charts.
   * [File Cacher](https://github.com/kosalgeek/FileCacher) for saving the api data for offline display.
   
-  
+> App has still some incomplete feature I'm not sure when I'm gonna add them due to lack of time for developement.  
