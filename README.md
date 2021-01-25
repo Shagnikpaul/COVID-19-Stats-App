@@ -4,6 +4,7 @@
 </p>
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Shagnikpaul/COVID-19-Stats-App?color=green&label=App%20Version)
+![GitHub all releases](https://img.shields.io/github/downloads/Shagnikpaul/COVID-19-Stats-App/total?color=green&label=Total%20downloads)
 # Basic features
   * Confirmed cases
   * Recovered 
