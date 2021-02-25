@@ -9,6 +9,7 @@
 <p align="center">
   <img src="https://github.com/Shagnikpaul/COVID-19-Stats-App/blob/master/Banner.png" />
 </p>
+
 # Basic features
   * Confirmed cases
   * Recovered 
